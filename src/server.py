@@ -5,4 +5,4 @@ app = FastAPI()
 
 @app.get('/')
 def home():
-    return {'Mensagem': 'MyFlix Back-end API'}
+    return {'Mensagem': 'MyFlix back-end API'}
