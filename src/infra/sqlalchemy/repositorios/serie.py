@@ -1,3 +1,4 @@
+from sqlalchemy import select, delete
 from sqlalchemy.orm import Session
 
 from src.infra.sqlalchemy.models import models
@@ -23,5 +24,14 @@ class RepositorioSerie:
         series = self.db.query(models.Serie).all()
         return series
 
-    def listar_serie(self, serie_id: int):
-        return self.db.query(models.Serie).filter(models.Serie.id == serie_id).first()
+    def obter_serie(self, serie_id: int):
+        stmt = select(models.Serie).filter_by(id=serie_id)
+        serie = self.db.execute(stmt).first()
+        return serie
+        # return self.db.query(models.Serie).filter(models.Serie.id == serie_id).first()
+
+    def remover_serie(self, serie_id: int):
+        stmt = delete(models.Serie).where(models.Serie.id == serie_id)
+
+        self.db.execute(stmt)
+        self.db.commit()

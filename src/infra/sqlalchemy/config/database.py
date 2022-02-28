@@ -3,7 +3,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-db_url = config('DATABASE_URL', default='sqlite:///./app_blx.db')
+db_url = config('DATABASE_URL', default='sqlite:///./app_myflix.db')
 
 if db_url.startswith("postgres://"):
     db_url = db_url.replace("postgres://", "postgresql://", 1)
